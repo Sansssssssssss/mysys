@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-@ConfigurationProperties(prefix = "sys")
-public class SysConfig
+@ConfigurationProperties(prefix = "app")
+public class AppConfig
 {
     /** 项目名称 */
     private String name;
@@ -67,7 +67,7 @@ public class SysConfig
 
     public void setProfile(String profile)
     {
-        SysConfig.profile = profile;
+        AppConfig.profile = profile;
     }
 
     public static boolean isAddressEnabled()
@@ -77,7 +77,7 @@ public class SysConfig
 
     public void setAddressEnabled(boolean addressEnabled)
     {
-        SysConfig.addressEnabled = addressEnabled;
+        AppConfig.addressEnabled = addressEnabled;
     }
 
     public static String getCaptchaType() {
@@ -85,7 +85,7 @@ public class SysConfig
     }
 
     public void setCaptchaType(String captchaType) {
-        SysConfig.captchaType = captchaType;
+        AppConfig.captchaType = captchaType;
     }
 
     /**

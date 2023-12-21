@@ -1,4 +1,4 @@
-import { parseTime } from './mysys'
+import { parseTime } from './app'
 
 /**
  * 表格时间格式化

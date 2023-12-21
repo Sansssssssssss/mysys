@@ -3,7 +3,7 @@ package com.mysys.web.controller.system;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.mysys.common.config.SysConfig;
+import com.mysys.common.config.AppConfig;
 import com.mysys.common.utils.StringUtils;
 
 /**
@@ -16,7 +16,7 @@ public class SysIndexController
 {
     /** 系统基础配置 */
     @Autowired
-    private SysConfig mysysConfig;
+    private AppConfig mysysConfig;
 
     /**
      * 访问首页，提示语

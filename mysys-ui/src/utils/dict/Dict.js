@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { mergeRecursive } from "@/utils/mysys";
+import { mergeRecursive } from "@/utils/app";
 import DictMeta from './DictMeta'
 import DictData from './DictData'
 

@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
-import com.mysys.common.config.SysConfig;
+import com.mysys.common.config.AppConfig;
 import com.mysys.common.constant.Constants;
 import com.mysys.common.utils.StringUtils;
 import com.mysys.common.utils.http.HttpUtils;
@@ -31,7 +31,7 @@ public class AddressUtils
         {
             return "内网IP";
         }
-        if (SysConfig.isAddressEnabled())
+        if (AppConfig.isAddressEnabled())
         {
             try
             {

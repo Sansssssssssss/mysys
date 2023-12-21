@@ -73,7 +73,7 @@ import com.mysys.common.annotation.Excel;
 import com.mysys.common.annotation.Excel.ColumnType;
 import com.mysys.common.annotation.Excel.Type;
 import com.mysys.common.annotation.Excels;
-import com.mysys.common.config.SysConfig;
+import com.mysys.common.config.AppConfig;
 import com.mysys.common.core.domain.AjaxResult;
 import com.mysys.common.core.text.Convert;
 import com.mysys.common.exception.UtilException;
@@ -1355,7 +1355,7 @@ public class ExcelUtil<T>
      */
     public String getAbsoluteFile(String filename)
     {
-        String downloadPath = SysConfig.getDownloadPath() + filename;
+        String downloadPath = AppConfig.getDownloadPath() + filename;
         File desc = new File(downloadPath);
         if (!desc.getParentFile().exists())
         {
