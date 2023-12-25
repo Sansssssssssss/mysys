@@ -1,15 +1,14 @@
 package com.mysys.system.service;
 
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.mysys.common.core.domain.entity.SysDictData;
+
+import java.util.List;
 
 /**
  * 字典 业务层
- *
- *
  */
-public interface ISysDictDataService
-{
+public interface ISysDictDataService extends IService<SysDictData> {
     /**
      * 根据条件分页查询字典数据
      *
@@ -21,11 +20,12 @@ public interface ISysDictDataService
     /**
      * 根据字典类型和字典键值查询字典数据信息
      *
-     * @param dictType 字典类型
+     * @param dictType  字典类型
      * @param dictValue 字典键值
      * @return 字典标签
      */
-    public String selectDictLabel(String dictType, String dictValue);
+    public String selectDictLabel(String dictType,
+                                  String dictValue);
 
     /**
      * 根据字典数据ID查询信息

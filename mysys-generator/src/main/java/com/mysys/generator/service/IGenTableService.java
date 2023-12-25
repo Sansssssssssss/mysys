@@ -1,16 +1,14 @@
 package com.mysys.generator.service;
 
+import com.mysys.generator.domain.GenTable;
+
 import java.util.List;
 import java.util.Map;
-import com.mysys.generator.domain.GenTable;
 
 /**
  * 业务 服务层
- *
- *
  */
-public interface IGenTableService
-{
+public interface IGenTableService {
     /**
      * 查询业务列表
      *

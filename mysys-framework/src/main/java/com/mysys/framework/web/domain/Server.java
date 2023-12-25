@@ -1,16 +1,8 @@
 package com.mysys.framework.web.domain;
 
-import java.net.UnknownHostException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Properties;
 import com.mysys.common.utils.Arith;
 import com.mysys.common.utils.ip.IpUtils;
-import com.mysys.framework.web.domain.server.Cpu;
-import com.mysys.framework.web.domain.server.Jvm;
-import com.mysys.framework.web.domain.server.Mem;
-import com.mysys.framework.web.domain.server.Sys;
-import com.mysys.framework.web.domain.server.SysFile;
+import com.mysys.framework.web.domain.server.*;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.CentralProcessor.TickType;
@@ -21,13 +13,15 @@ import oshi.software.os.OSFileStore;
 import oshi.software.os.OperatingSystem;
 import oshi.util.Util;
 
+import java.net.UnknownHostException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Properties;
+
 /**
  * 服务器相关信息
- *
- * 
  */
-public class Server
-{
+public class Server {
     private static final int OSHI_WAIT_SECOND = 1000;
 
     /**
@@ -55,59 +49,48 @@ public class Server
      */
     private List<SysFile> sysFiles = new LinkedList<SysFile>();
 
-    public Cpu getCpu()
-    {
+    public Cpu getCpu() {
         return cpu;
     }
 
-    public void setCpu(Cpu cpu)
-    {
+    public void setCpu(Cpu cpu) {
         this.cpu = cpu;
     }
 
-    public Mem getMem()
-    {
+    public Mem getMem() {
         return mem;
     }
 
-    public void setMem(Mem mem)
-    {
+    public void setMem(Mem mem) {
         this.mem = mem;
     }
 
-    public Jvm getJvm()
-    {
+    public Jvm getJvm() {
         return jvm;
     }
 
-    public void setJvm(Jvm jvm)
-    {
+    public void setJvm(Jvm jvm) {
         this.jvm = jvm;
     }
 
-    public Sys getSys()
-    {
+    public Sys getSys() {
         return sys;
     }
 
-    public void setSys(Sys sys)
-    {
+    public void setSys(Sys sys) {
         this.sys = sys;
     }
 
-    public List<SysFile> getSysFiles()
-    {
+    public List<SysFile> getSysFiles() {
         return sysFiles;
     }
 
-    public void setSysFiles(List<SysFile> sysFiles)
-    {
+    public void setSysFiles(List<SysFile> sysFiles) {
         this.sysFiles = sysFiles;
     }
 
-    public void copyTo() throws Exception
-    {
-        SystemInfo si = new SystemInfo();
+    public void copyTo() throws Exception {
+        SystemInfo               si  = new SystemInfo();
         HardwareAbstractionLayer hal = si.getHardware();
 
         setCpuInfo(hal.getProcessor());
@@ -124,21 +107,20 @@ public class Server
     /**
      * 设置CPU信息
      */
-    private void setCpuInfo(CentralProcessor processor)
-    {
+    private void setCpuInfo(CentralProcessor processor) {
         // CPU信息
         long[] prevTicks = processor.getSystemCpuLoadTicks();
         Util.sleep(OSHI_WAIT_SECOND);
-        long[] ticks = processor.getSystemCpuLoadTicks();
-        long nice = ticks[TickType.NICE.getIndex()] - prevTicks[TickType.NICE.getIndex()];
-        long irq = ticks[TickType.IRQ.getIndex()] - prevTicks[TickType.IRQ.getIndex()];
-        long softirq = ticks[TickType.SOFTIRQ.getIndex()] - prevTicks[TickType.SOFTIRQ.getIndex()];
-        long steal = ticks[TickType.STEAL.getIndex()] - prevTicks[TickType.STEAL.getIndex()];
-        long cSys = ticks[TickType.SYSTEM.getIndex()] - prevTicks[TickType.SYSTEM.getIndex()];
-        long user = ticks[TickType.USER.getIndex()] - prevTicks[TickType.USER.getIndex()];
-        long iowait = ticks[TickType.IOWAIT.getIndex()] - prevTicks[TickType.IOWAIT.getIndex()];
-        long idle = ticks[TickType.IDLE.getIndex()] - prevTicks[TickType.IDLE.getIndex()];
-        long totalCpu = user + nice + cSys + idle + iowait + irq + softirq + steal;
+        long[] ticks    = processor.getSystemCpuLoadTicks();
+        long   nice     = ticks[TickType.NICE.getIndex()] - prevTicks[TickType.NICE.getIndex()];
+        long   irq      = ticks[TickType.IRQ.getIndex()] - prevTicks[TickType.IRQ.getIndex()];
+        long   softirq  = ticks[TickType.SOFTIRQ.getIndex()] - prevTicks[TickType.SOFTIRQ.getIndex()];
+        long   steal    = ticks[TickType.STEAL.getIndex()] - prevTicks[TickType.STEAL.getIndex()];
+        long   cSys     = ticks[TickType.SYSTEM.getIndex()] - prevTicks[TickType.SYSTEM.getIndex()];
+        long   user     = ticks[TickType.USER.getIndex()] - prevTicks[TickType.USER.getIndex()];
+        long   iowait   = ticks[TickType.IOWAIT.getIndex()] - prevTicks[TickType.IOWAIT.getIndex()];
+        long   idle     = ticks[TickType.IDLE.getIndex()] - prevTicks[TickType.IDLE.getIndex()];
+        long   totalCpu = user + nice + cSys + idle + iowait + irq + softirq + steal;
         cpu.setCpuNum(processor.getLogicalProcessorCount());
         cpu.setTotal(totalCpu);
         cpu.setSys(cSys);
@@ -150,8 +132,7 @@ public class Server
     /**
      * 设置内存信息
      */
-    private void setMemInfo(GlobalMemory memory)
-    {
+    private void setMemInfo(GlobalMemory memory) {
         mem.setTotal(memory.getTotal());
         mem.setUsed(memory.getTotal() - memory.getAvailable());
         mem.setFree(memory.getAvailable());
@@ -160,8 +141,7 @@ public class Server
     /**
      * 设置服务器信息
      */
-    private void setSysInfo()
-    {
+    private void setSysInfo() {
         Properties props = System.getProperties();
         sys.setComputerName(IpUtils.getHostName());
         sys.setComputerIp(IpUtils.getHostIp());
@@ -173,8 +153,7 @@ public class Server
     /**
      * 设置Java虚拟机
      */
-    private void setJvmInfo() throws UnknownHostException
-    {
+    private void setJvmInfo() throws UnknownHostException {
         Properties props = System.getProperties();
         jvm.setTotal(Runtime.getRuntime().totalMemory());
         jvm.setMax(Runtime.getRuntime().maxMemory());
@@ -186,15 +165,13 @@ public class Server
     /**
      * 设置磁盘信息
      */
-    private void setSysFiles(OperatingSystem os)
-    {
-        FileSystem fileSystem = os.getFileSystem();
-        List<OSFileStore> fsArray = fileSystem.getFileStores();
-        for (OSFileStore fs : fsArray)
-        {
-            long free = fs.getUsableSpace();
-            long total = fs.getTotalSpace();
-            long used = total - free;
+    private void setSysFiles(OperatingSystem os) {
+        FileSystem        fileSystem = os.getFileSystem();
+        List<OSFileStore> fsArray    = fileSystem.getFileStores();
+        for (OSFileStore fs : fsArray) {
+            long    free    = fs.getUsableSpace();
+            long    total   = fs.getTotalSpace();
+            long    used    = total - free;
             SysFile sysFile = new SysFile();
             sysFile.setDirName(fs.getMount());
             sysFile.setSysTypeName(fs.getType());
@@ -213,27 +190,19 @@ public class Server
      * @param size 字节大小
      * @return 转换后值
      */
-    public String convertFileSize(long size)
-    {
+    public String convertFileSize(long size) {
         long kb = 1024;
         long mb = kb * 1024;
         long gb = mb * 1024;
-        if (size >= gb)
-        {
+        if (size >= gb) {
             return String.format("%.1f GB", (float) size / gb);
-        }
-        else if (size >= mb)
-        {
+        } else if (size >= mb) {
             float f = (float) size / mb;
             return String.format(f > 100 ? "%.0f MB" : "%.1f MB", f);
-        }
-        else if (size >= kb)
-        {
+        } else if (size >= kb) {
             float f = (float) size / kb;
             return String.format(f > 100 ? "%.0f KB" : "%.1f KB", f);
-        }
-        else
-        {
+        } else {
             return String.format("%d B", size);
         }
     }

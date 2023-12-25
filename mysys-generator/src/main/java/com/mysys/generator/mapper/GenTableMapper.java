@@ -1,15 +1,13 @@
 package com.mysys.generator.mapper;
 
-import java.util.List;
 import com.mysys.generator.domain.GenTable;
+
+import java.util.List;
 
 /**
  * 业务 数据层
- *
- * 
  */
-public interface GenTableMapper
-{
+public interface GenTableMapper {
     /**
      * 查询业务列表
      *

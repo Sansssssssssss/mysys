@@ -1,16 +1,15 @@
 package com.mysys.system.mapper;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mysys.common.core.domain.entity.SysDictData;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 字典表 数据层
- *
- *
  */
-public interface SysDictDataMapper
-{
+public interface SysDictDataMapper extends BaseMapper<SysDictData> {
     /**
      * 根据条件分页查询字典数据
      *
@@ -30,11 +29,12 @@ public interface SysDictDataMapper
     /**
      * 根据字典类型和字典键值查询字典数据信息
      *
-     * @param dictType 字典类型
+     * @param dictType  字典类型
      * @param dictValue 字典键值
      * @return 字典标签
      */
-    public String selectDictLabel(@Param("dictType") String dictType, @Param("dictValue") String dictValue);
+    public String selectDictLabel(@Param("dictType") String dictType,
+                                  @Param("dictValue") String dictValue);
 
     /**
      * 根据字典数据ID查询信息
@@ -91,5 +91,6 @@ public interface SysDictDataMapper
      * @param newDictType 新旧字典类型
      * @return 结果
      */
-    public int updateDictDataType(@Param("oldDictType") String oldDictType, @Param("newDictType") String newDictType);
+    public int updateDictDataType(@Param("oldDictType") String oldDictType,
+                                  @Param("newDictType") String newDictType);
 }

@@ -1,15 +1,14 @@
 package com.mysys.system.service;
 
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.mysys.system.domain.SysConfig;
+
+import java.util.List;
 
 /**
  * 参数配置 服务层
- *
- * 
  */
-public interface ISysConfigService
-{
+public interface ISysConfigService extends IService<SysConfig> {
     /**
      * 查询参数配置信息
      *

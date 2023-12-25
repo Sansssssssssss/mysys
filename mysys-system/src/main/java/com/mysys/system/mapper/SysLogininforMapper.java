@@ -1,15 +1,14 @@
 package com.mysys.system.mapper;
 
-import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mysys.system.domain.SysLogininfor;
+
+import java.util.List;
 
 /**
  * 系统访问日志情况信息 数据层
- *
- * 
  */
-public interface SysLogininforMapper
-{
+public interface SysLogininforMapper extends BaseMapper<SysLogininfor> {
     /**
      * 新增系统登录日志
      *

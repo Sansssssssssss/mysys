@@ -1,23 +1,17 @@
 package com.mysys.common.annotation;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import com.mysys.common.constant.CacheConstants;
 import com.mysys.common.enums.LimitType;
 
+import java.lang.annotation.*;
+
 /**
  * 限流注解
- *
- *
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface RateLimiter
-{
+public @interface RateLimiter {
     /**
      * 限流key
      */

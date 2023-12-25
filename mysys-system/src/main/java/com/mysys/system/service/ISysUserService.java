@@ -1,15 +1,14 @@
 package com.mysys.system.service;
 
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.mysys.common.core.domain.entity.SysUser;
+
+import java.util.List;
 
 /**
  * 用户 业务层
- *
- * 
  */
-public interface ISysUserService
-{
+public interface ISysUserService extends IService<SysUser> {
     /**
      * 根据条件分页查询用户列表
      *
@@ -131,10 +130,11 @@ public interface ISysUserService
     /**
      * 用户授权角色
      *
-     * @param userId 用户ID
+     * @param userId  用户ID
      * @param roleIds 角色组
      */
-    public void insertUserAuth(Long userId, Long[] roleIds);
+    public void insertUserAuth(Long userId,
+                               Long[] roleIds);
 
     /**
      * 修改用户状态
@@ -156,10 +156,11 @@ public interface ISysUserService
      * 修改用户头像
      *
      * @param userName 用户名
-     * @param avatar 头像地址
+     * @param avatar   头像地址
      * @return 结果
      */
-    public boolean updateUserAvatar(String userName, String avatar);
+    public boolean updateUserAvatar(String userName,
+                                    String avatar);
 
     /**
      * 重置用户密码
@@ -176,7 +177,8 @@ public interface ISysUserService
      * @param password 密码
      * @return 结果
      */
-    public int resetUserPwd(String userName, String password);
+    public int resetUserPwd(String userName,
+                            String password);
 
     /**
      * 通过用户ID删除用户
@@ -197,10 +199,12 @@ public interface ISysUserService
     /**
      * 导入用户数据
      *
-     * @param userList 用户数据列表
+     * @param userList        用户数据列表
      * @param isUpdateSupport 是否更新支持，如果已存在，则进行更新数据
-     * @param operName 操作用户
+     * @param operName        操作用户
      * @return 结果
      */
-    public String importUser(List<SysUser> userList, Boolean isUpdateSupport, String operName);
+    public String importUser(List<SysUser> userList,
+                             Boolean isUpdateSupport,
+                             String operName);
 }

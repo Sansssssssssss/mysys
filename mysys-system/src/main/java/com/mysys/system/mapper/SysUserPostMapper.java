@@ -1,15 +1,14 @@
 package com.mysys.system.mapper;
 
-import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mysys.system.domain.SysUserPost;
+
+import java.util.List;
 
 /**
  * 用户与岗位关联表 数据层
- *
- * 
  */
-public interface SysUserPostMapper
-{
+public interface SysUserPostMapper extends BaseMapper<SysUserPost> {
     /**
      * 通过用户ID删除用户和岗位关联
      *

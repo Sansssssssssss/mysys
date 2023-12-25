@@ -1,15 +1,14 @@
 package com.mysys.system.service;
 
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.mysys.system.domain.SysPost;
+
+import java.util.List;
 
 /**
  * 岗位信息 服务层
- *
- *
  */
-public interface ISysPostService
-{
+public interface ISysPostService extends IService<SysPost> {
     /**
      * 查询岗位信息集合
      *

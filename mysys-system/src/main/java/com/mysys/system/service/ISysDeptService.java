@@ -1,16 +1,15 @@
 package com.mysys.system.service;
 
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.mysys.common.core.domain.TreeSelect;
 import com.mysys.common.core.domain.entity.SysDept;
 
+import java.util.List;
+
 /**
  * 部门管理 服务层
- *
- * 
  */
-public interface ISysDeptService
-{
+public interface ISysDeptService extends IService<SysDept> {
     /**
      * 查询部门管理数据
      *

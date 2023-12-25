@@ -1,15 +1,14 @@
 package com.mysys.system.mapper;
 
-import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mysys.common.core.domain.entity.SysDictType;
+
+import java.util.List;
 
 /**
  * 字典表 数据层
- *
- *
  */
-public interface SysDictTypeMapper
-{
+public interface SysDictTypeMapper extends BaseMapper<SysDictType> {
     /**
      * 根据条件分页查询字典类型
      *

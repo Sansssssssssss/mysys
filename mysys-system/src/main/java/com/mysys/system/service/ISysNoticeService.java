@@ -1,15 +1,14 @@
 package com.mysys.system.service;
 
-import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.mysys.system.domain.SysNotice;
+
+import java.util.List;
 
 /**
  * 公告 服务层
- *
- * 
  */
-public interface ISysNoticeService
-{
+public interface ISysNoticeService extends IService<SysNotice> {
     /**
      * 查询公告信息
      *

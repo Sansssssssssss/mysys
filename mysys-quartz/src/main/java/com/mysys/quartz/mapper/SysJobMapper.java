@@ -1,15 +1,13 @@
 package com.mysys.quartz.mapper;
 
-import java.util.List;
 import com.mysys.quartz.domain.SysJob;
+
+import java.util.List;
 
 /**
  * 调度任务信息 数据层
- *
- * 
  */
-public interface SysJobMapper
-{
+public interface SysJobMapper {
     /**
      * 查询调度任务日志集合
      *

@@ -2,11 +2,8 @@ package com.mysys.common.constant;
 
 /**
  * 返回状态码
- *
- *
  */
-public class HttpStatus
-{
+public class HttpStatus {
     /**
      * 操作成功
      */

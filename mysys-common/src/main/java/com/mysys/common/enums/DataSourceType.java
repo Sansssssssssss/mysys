@@ -2,11 +2,8 @@ package com.mysys.common.enums;
 
 /**
  * 数据源
- *
- *
  */
-public enum DataSourceType
-{
+public enum DataSourceType {
     /**
      * 主库
      */

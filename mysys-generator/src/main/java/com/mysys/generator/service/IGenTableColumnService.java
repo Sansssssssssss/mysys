@@ -1,15 +1,13 @@
 package com.mysys.generator.service;
 
-import java.util.List;
 import com.mysys.generator.domain.GenTableColumn;
+
+import java.util.List;
 
 /**
  * 业务字段 服务层
- *
- *
  */
-public interface IGenTableColumnService
-{
+public interface IGenTableColumnService {
     /**
      * 查询业务字段列表
      *

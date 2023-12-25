@@ -1,15 +1,14 @@
 package com.mysys.system.mapper;
 
-import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mysys.system.domain.SysRoleMenu;
+
+import java.util.List;
 
 /**
  * 角色与菜单关联表 数据层
- *
- * 
  */
-public interface SysRoleMenuMapper
-{
+public interface SysRoleMenuMapper extends BaseMapper<SysRoleMenu> {
     /**
      * 查询菜单使用数量
      *

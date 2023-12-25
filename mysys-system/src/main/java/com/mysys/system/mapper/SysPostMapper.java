@@ -1,15 +1,14 @@
 package com.mysys.system.mapper;
 
-import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mysys.system.domain.SysPost;
+
+import java.util.List;
 
 /**
  * 岗位信息 数据层
- *
- *
  */
-public interface SysPostMapper
-{
+public interface SysPostMapper extends BaseMapper<SysPost> {
     /**
      * 查询岗位数据集合
      *

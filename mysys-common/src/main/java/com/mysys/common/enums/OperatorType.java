@@ -2,11 +2,8 @@ package com.mysys.common.enums;
 
 /**
  * 操作人类别
- *
- *
  */
-public enum OperatorType
-{
+public enum OperatorType {
     /**
      * 其它
      */

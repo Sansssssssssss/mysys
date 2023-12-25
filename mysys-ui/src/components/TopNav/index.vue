@@ -7,8 +7,8 @@
     <template v-for="(item, index) in topMenus">
       <el-menu-item :style="{'--theme': theme}" :index="item.path" :key="index" v-if="index < visibleNumber">
         <svg-icon
-        v-if="item.meta && item.meta.icon && item.meta.icon !== '#'"
-        :icon-class="item.meta.icon"/>
+          v-if="item.meta && item.meta.icon && item.meta.icon !== '#'"
+          :icon-class="item.meta.icon"/>
         {{ item.meta.title }}
       </el-menu-item>
     </template>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { constantRoutes } from "@/router";
+import {constantRoutes} from "@/router";
 
 // 隐藏侧边栏路由
 const hideList = ['/index', '/user/profile'];
@@ -75,10 +75,10 @@ export default {
       this.routers.map((router) => {
         for (var item in router.children) {
           if (router.children[item].parentPath === undefined) {
-            if(router.path === "/") {
+            if (router.path === "/") {
               router.children[item].path = "/" + router.children[item].path;
             } else {
-              if(!this.ishttp(router.children[item].path)) {
+              if (!this.ishttp(router.children[item].path)) {
                 router.children[item].path = router.path + "/" + router.children[item].path;
               }
             }
@@ -99,7 +99,7 @@ export default {
         if (!this.$route.meta.link) {
           this.$store.dispatch('app/toggleSideBarHide', false);
         }
-      } else if(!this.$route.children) {
+      } else if (!this.$route.children) {
         activePath = path;
         this.$store.dispatch('app/toggleSideBarHide', true);
       }
@@ -134,9 +134,9 @@ export default {
         const routeMenu = this.childrenMenus.find(item => item.path === key);
         if (routeMenu && routeMenu.query) {
           let query = JSON.parse(routeMenu.query);
-          this.$router.push({ path: key, query: query });
+          this.$router.push({path: key, query: query});
         } else {
-          this.$router.push({ path: key });
+          this.$router.push({path: key});
         }
         this.$store.dispatch('app/toggleSideBarHide', true);
       } else {
@@ -155,7 +155,7 @@ export default {
           }
         });
       }
-      if(routes.length > 0) {
+      if (routes.length > 0) {
         this.$store.commit("SET_SIDEBAR_ROUTERS", routes);
       } else {
         this.$store.dispatch('app/toggleSideBarHide', true);

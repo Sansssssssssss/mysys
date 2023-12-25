@@ -2,11 +2,8 @@ package com.mysys.common.enums;
 
 /**
  * 业务操作类型
- *
- * 
  */
-public enum BusinessType
-{
+public enum BusinessType {
     /**
      * 其它
      */

@@ -1,16 +1,15 @@
 package com.mysys.system.mapper;
 
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mysys.common.core.domain.entity.SysDept;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 部门管理 数据层
- *
- *
  */
-public interface SysDeptMapper
-{
+public interface SysDeptMapper extends BaseMapper<SysDept> {
     /**
      * 查询部门管理数据
      *
@@ -22,11 +21,12 @@ public interface SysDeptMapper
     /**
      * 根据角色ID查询部门树信息
      *
-     * @param roleId 角色ID
+     * @param roleId            角色ID
      * @param deptCheckStrictly 部门树选择项是否关联显示
      * @return 选中部门列表
      */
-    public List<Long> selectDeptListByRoleId(@Param("roleId") Long roleId, @Param("deptCheckStrictly") boolean deptCheckStrictly);
+    public List<Long> selectDeptListByRoleId(@Param("roleId") Long roleId,
+                                             @Param("deptCheckStrictly") boolean deptCheckStrictly);
 
     /**
      * 根据部门ID查询信息
@@ -75,7 +75,8 @@ public interface SysDeptMapper
      * @param parentId 父部门ID
      * @return 结果
      */
-    public SysDept checkDeptNameUnique(@Param("deptName") String deptName, @Param("parentId") Long parentId);
+    public SysDept checkDeptNameUnique(@Param("deptName") String deptName,
+                                       @Param("parentId") Long parentId);
 
     /**
      * 新增部门信息

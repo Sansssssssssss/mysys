@@ -1,15 +1,14 @@
 package com.mysys.system.mapper;
 
-import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mysys.system.domain.SysNotice;
+
+import java.util.List;
 
 /**
  * 通知公告表 数据层
- *
- * 
  */
-public interface SysNoticeMapper
-{
+public interface SysNoticeMapper extends BaseMapper<SysNotice> {
     /**
      * 查询公告信息
      *
