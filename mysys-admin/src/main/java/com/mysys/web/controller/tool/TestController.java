@@ -88,7 +88,34 @@ public class TestController extends BaseController {
             return R.fail("用户不存在");
         }
     }
+
+    // test java 17 and java 21
+    public static void main(String[] args) {
+        var users = """
+                {
+                    ""
+                }
+                """;
+
+        Animal dog = new Dog("dog");
+        Animal cat = new Cat("cat");
+
+        if (cat instanceof Dog animal) {
+            System.out.println(animal.name());
+        }
+        List<String> strings = List.of("");
+        Map<String, String> stringStringMap = Map.of("", "");
+    }
+
 }
+
+sealed interface Animal permits Bird, Cat, Dog {
+    String name();
+}
+
+record Bird(String name) implements Animal {}
+record Cat(String name) implements Animal {}
+record Dog(String name) implements Animal {}
 
 @Schema(name = "UserEntity", description = "用户实体")
 class UserEntity {
