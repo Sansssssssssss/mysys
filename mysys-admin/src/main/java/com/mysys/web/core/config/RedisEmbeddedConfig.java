@@ -1,4 +1,4 @@
-package com.mysys;
+package com.mysys.web.core.config;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
